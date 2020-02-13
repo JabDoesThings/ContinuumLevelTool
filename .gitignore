@@ -1,0 +1,4 @@
+target/
+.idea/
+runjar.bat
+src/main/java/editor.zip

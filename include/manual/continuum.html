@@ -1,0 +1,197 @@
+<html><head><title>Continuum Level Editor</title></head>
+
+<body>
+<h2><b><u>Continuum Level Editor</u></b></h2>
+
+<i><h3>Intro:</h3></i>
+<p>This is a level/map editor for the game Subspace/Continuum. Subspace/Continuum is a multiplayer asteroids-like game with a huge cult following. This level editor is superior to all the others out there for many reasons:</p>
+<ul>
+<li>It's java, so it can be supported by many platforms
+<li>It's open source, so people can change it with the times
+<li>It has more, better supported features
+<li>It's up-to-date
+</ul>
+
+<img src="fullpic.png" usemap="#fullpic"/>
+
+
+<i><h3>Usage:</h3></i>
+<p>Each map is called a level and is stored in an <i>.lvl</i> file. These can be loaded and saved from the file menu.</p>
+
+<p>Each level is made up of:</p>
+<ul>
+<li>Lvz images. An lvz image is an image. It's different from a tile, and floats on layers separate from tiles. Lvzs can have special properties and can be animated.
+<p><img src="lvz.png" /></p>
+<li>Tiles. A tile is a small icon that lines maps and forms borders.
+<p><img src="tiles.png" /></p>
+<li>Regions. A region is a rectangle with special properties
+<p><img src="regions.png" /></p>
+</ul>
+
+<map name="toolbar">
+<area shape="rect" coords="13,47,225,74" href="#fileicons" />
+<area shape="rect" coords="248,47,419,74" href="#tileicons" />
+<area shape="rect" coords="444,47,617,74" href="#selectionicons" />
+</map>
+
+<map name="fullpic">
+<area shape="rect" coords="13,47,225,74" href="#fileicons" />
+<area shape="rect" coords="248,47,419,74" href="#tileicons" />
+<area shape="rect" coords="444,47,617,74" href="#selectionicons" />
+<area shape="rect" coords="19,133,535,339" href="#regionswindow" />
+<area shape="rect" coords="673,127,781,331" href="#autotilewindow" />
+<area shape="rect" coords="555, 343, 948, 589" href="#lvzwindow" />
+<area shape="rect" coords="765, 598, 970, 823" href="#radarwindow" />
+<area shape="rect" coords="174, 550, 532, 775" href="#tilesetwindow" />
+<area shape="rect" coords="7, 28, 376, 48" href="#menuoptions" />
+</map>
+
+
+
+<i><h3>Menu options:</h3></i>
+<a name="menuoptions"> 
+<p><img src="toolbar.png" usemap="#toolbar" /></p>
+<p>File contains save, open, new, and close options. These are self explanatory.</p>
+<ul>
+<li>Edit has undo/redo, cut/delete/copy/paste, <a href="#elvl">a file attribute</a> editor (to change things like the title of your map), and <a href="#tileset">a tileset editor</a>
+<li>Selection has <a href="#selectionoptions">a few more options</a> which apply to selected tiles
+<li>View allows you to zoom in or zoom out from the display, and has an option to choose the program theme
+<li>Window lets you bring up a window for any of the following: <a href="#radarwindow">Radar</a>, <a href="#tilesetwindow">Tileset</a>, <a href="#autotilewindow">Auto Tile</a>, <a href="#lvzwindow">Lvz</a>, and <a href="#regionswindow">ASSS Regions</a>
+<li>Preferences allows you to turn on and off the grid on the map, and select hotkeys to use with the program.
+<li>Help contains a few self-explanatory answers to questions
+</ul>
+
+<i><h3><a name="fileicons">Toolbar Icons:</h3></i>
+<p>The first four icons are New, Open, Save, and Save as. They operate on the file you currently have open (or want to open/create).</p>
+
+<i><h3><a name="tileicons">Tile Drawing Icons:</h3></i>
+<p><b>NOTE</b>: Each tool below can be used with the left or right mouse button. Using the left mouse button on the map will draw with the tile with a red border selected in the <a href="#tilesetwindow">Tileset window</a>, and using the right mouse button draws with the tile outlined in blue.</p>
+<ul>
+<li>Pencil. This tool draws individual tiles (selected from the Tileset window).
+<p><img src="pen.gif"></p>
+<li>Line. This tool draws a line of tiles
+<p><img src="line.gif"></p>
+<li>Square. This tool draws a square outline of tiles
+<p><img src="square.gif"></p>
+<li>Filled Square. This tool draws a filled square of tiles
+<p><img src="squareFill.gif"></p>
+<li>Ellipse. This tool draws an empty ellipse of tiles
+<p><img src="ellipse.gif"></p>
+<li>Filled ellipse. This tool draws a filled ellipse of tiles
+<p><img src="ellipseFill.gif"></p>
+<li>Fill. The fill tool fills a bounded series of a tile with one tile you select.
+<p><img src="fill.gif"></p>
+</ul>
+
+<i><h3><a name="selectionicons">Other Selection Icons to the left of the tile ones:</h3></i>
+<ul>
+<li>Select tool. Use it to drag a box around tiles and lvzs you wish to select. From here you can drag around tiles, copy and paste them, and delete your selected lvzs in the LVZ window.
+<p><img src="select.gif"></p>
+<li>Eye dropper. Click on a tile and the tool will change to a pencil tool with the type of tile you selected.
+<p><img src="eyedrop.gif"></p>
+<li>AutoPen. In the Walls window, choose tiles that would correspond to the parts of a given wall. Once chosen, you can use the autopen to automatically draw tiles which appear connect to each other automatically. (For example, drawing down and then to the left creates a vertical tile, corner tile, and horizontal tile, automatically)
+<p><img src="autopen.gif"></p>
+<li>LVZ creation tool. After choosing an LVZ image from the LVZ window, you can click somewhere on the map and paste the image.
+<p><img src="lvzstamp.gif"></p>
+<li>LVZ selection tool. This tool selects individual LVZ images. You can drag and drop images to move them elsewhere on the map. Using the Autotile Background tab on the LVZ window, you can change certain properties of the selected LVZ image
+<p><img src="lvzselection.gif"></p>
+<li>Zoom tool. You can left-click to zoom in, or right-click to zoom out.
+<p><img src="zoom.gif"></p>
+<li>Region tool. This brings up the ASSS Regions window, and you can drag a box around an area of a map to create a region.
+<p><img src="rgn.gif"></p>
+</ul>
+
+<i><h3><a name="tileset">Edit Tileset</h3></i>
+<p><img src="edittileset.png" /></p>
+<p>This option in the Edit menu brings up a screen where you can edit your tileset (the set of tiles you can draw with). If you click on a tile it will show up (larger) in the area to the right.</p>
+<p>The white border shows the tile you've currently selected. All of the other colors signal places for special tiles (the legend for them is on the right).</p>
+<p>'Import Tileset' lets you choose another file containing the tileset you want. Tilesets are just images, divided into little 16-pixel squares, so any image would do.</p>
+<p>You can edit a tile using the built-in image editor by clicking on the edit button.</p>
+
+
+
+<i><h3><a name="selectionoptions">Selection Options</h3></i>
+<p>There are a few options here (in the Selection menu). None of these affect LVZ images. Only tiles.</p>
+<ul>
+<li>Flip Horizontally -- Flips the selection of tiles horizontally
+<li>Flip Vertically -- Flips the selection of tiles vertically
+<li>Rotate By Angle -- Rotates the tiles in the selection around the center of the selection by some angle (in degrees) you give it. Since tiles are set in discrete, 16-pixel boxes, expect that much precision.
+<li>Swap Tiles (retile) -- It replaces all of the tiles in your selection which are of the type that you highlighted with the blue box in the Tileset window with the one you selected with the red box.
+<li>Apply EZ Tile inside selection -- You create a bunch of regular tiles with one tile, and Apply EZ Tile will convert all the tiles of a selection of a tile to the bunch of tiles in the <a href="#autotilewindow">wall tiles</a> window. It uses fancy algorithms to detect what tiles would logically be walls, corners, etc.
+<li>Randomly Fill Selection With Selected Tile -- replace some given percentage of all of the tiles in the selection with a tile you choose.
+</ul>
+
+<i><h3><a name="tilesetwindow">Tileset Window</h3></i>
+<p><img src="tileset.png" /></p>
+<p>The red box and the blue box show the tiles you select with your left and right mouse buttons, respectively. Some of the tiles have special meaning, but see the <a href="#tileset">editing tileset window</a> about that. The tiles to the side are bigger, built-in tiles. They can only be drawn with the pencil tool.</p>
+<p>The tiles on the bottom have special meanings, too. There is a help button to the left with explanations for each of these.</p>
+
+
+<i><h3><a name="radarwindow">Radar Window</h3></i>
+<p><img src="radar.png" /></p>
+<p>This is pretty simple. It's the overall view of the map (with less detail), with a red box outlining where the map is currently being shown on screen.</p>
+
+
+<i><h3><a name="autotilewindow">Autotile Walls Window</h3></i>
+<p><img src="autotile.png" /></p>
+<p>This is useful when you want to draw a border or a wall, it's more complicated than a straight line, and you have specific tiles for your corner piece, vertical piece, horizontal piece, or similarly bordering pieces. In the default tileset, there is at least one set of tiles which fit nicely in a wall. To use it:</p>
+<ol>
+<li>Choose a tile for your upper-left corner piece (which would look kind of like the red and white piece in the upper-left of the walls window)
+<li>Click on the corresponding area of the walls window to replace the red/white piece with your own
+<li>Repeat for all the other tiles
+</ol>
+<p>When you are finished, you can use the wall drawing tool (the red pen which is the third from the left in the right-most grouping of icons). Use it like you would the pencil tool, and connecting tiles will automatically be changed so that they seemlessly connect.</p>
+<p>The 'Add' and 'Delete' buttons in the walls window add or delete your defined walls in tabs above the tile image.</p>
+
+<i><h3><a name="lvzwindow">LVZ window</h3></i>
+<p>The LVZ window deals with LVZ images, which are special images that float at any pixel independently of tiles. There are four tabs to this window:</p>
+<ul>
+<li>Images -- 
+<p><img src="lvzimages.png" /></p>
+<p>Here you can choose which LVZ image you wish to paste to your map. (The LVZ tool, the icon 4th from the right of the right-most icon grouping, is used to paste lvzs.) You can import LVZs from <i>.lvz</i> files, remove them, and create new ones. You can select your current lvz from the drop down menu on top of the window.</p>
+<p>You can create a new lvz image, import one from some image file, edit it, or remove it with the buttons on the bottom.</p>
+<li>Add Options -- 
+<p><img src="lvzaddoptions.png" /></p>
+<p>These options apply to the next LVZ image you paste to the map. Snap to tile means its X and Y coordinates will line up with the tiles (on the grid). You may choose the layer to add the LVZ image to, which becomes important in gameplay when you wish to specify what the LVZ image masks and what covers the LVZ image.</p>
+<p>The Display time of an LVZ is how long it appears before it disappears. The Object ID is simply a number you give it to keep track of it.</p>
+<li>Map Objects -- 
+<p><img src="lvzmapobjects.png" /></p>
+<p>These options apply to one selected LVZ image. (If you have many LVZ images selected, it will apply to one at random.)</p>
+<ul>
+<li>Delete Selection -- Deletes the LVZ image from the map
+<li>Image ID -- This is the reference to the image of the lvz. Change this and its image will change to another one from that <i>.lvz</i> file
+<li>Layer -- This is the layer of that LVZ image. Change this and its layer will change
+<li>Mode -- This is the mode of the LVZ image. Change this and its mode will change. It can be one of the following options:
+<ul>
+<li>ShowAlways -- The object is always visible
+<li>EnterZone -- Object is there from when a player enters the object's zone. It lasts as long as its display time says.
+<li>EnterArena -- Object is there from when a player enters the object's arena for as long as the display time states.
+<li>Kill -- Object is displayed to players who kill someone else for the display time's time.
+<li>Death: Object is displayed to players who die for display time's time.
+<li>ServerControlled -- object is displayed when moderator issues a moderator command <code>objon</code>
+</ul>
+<li>Display Time (seconds) -- This is the display time of the LVZ image, which counts for objects with a certain mode. After so many seconds the object will disappear from view. Change this and its display time will change. A value of 0 means always.
+<li>Object ID -- This is the object ID of the LVZ image selected. Change this and its object ID will change. This is useful when the server wants to move it around or make it disappear
+<li>
+<li>LVZ File -- this is the open <i>.lvz</i> file this LVZ image comes from. Changing this will switch to a different <i>.lvz</i> file, which changes the LVZ image selected
+<li>Number -- this is the number of the selected LVZ. Changing this changes which LVZ is currently selected.
+<li>X and Y -- this is the location of the lvz image. Changing this moves the LVZ
+</ul>
+<li>Autotile Background -- 
+<p><img src="lvzautotilebackground.png" /></p>
+<p>This option tiles an image you select from the Images tab across the background within the coordinates you specify.</p>
+</ul>
+
+<i><h3><a name="regionswindow">ASSS Regions Window</h3></i>
+<p><img src="asssregionswindow.png" /></p>
+<p>Regions are areas in the map with special properties. They can be drawn with the region tool (right-most icon with &quot;RGN&quot;). Import Region allows you to load regions from either an <i>.rgn</i> file or an <a href="#elvl">eLVL</a> file.</p>
+<p>Each region is a set of rectangles which occupy some amount of space in the map. Each rectangle is given a name by the program (like <i>Rectangle2</i>) and has the color given to it by its region. Each region has one color (but this color is only used to distinguish regions from each other and doesn't show up in gameplay). On the right side there are 5 properties (like &quot;No Weapons&quot;) which can be set or unset. The dimensions of the rectangle can be changed in the textboxes right next to that.</p>
+
+
+<i><h3><a name="elvl">eLVL files</h3></i>
+<p><img src="elvl.png" /></p>
+<p>eLVL files are extended <i>.lvl</i> files. They hold extra data (like region information) which some clients or servers (or other map editors) may not support. During saving the map editor will give you an option to throw away this information to have a more compatable saved file.</p>
+<p>You may edit the file attributes (like the title of the map) in the Edit menu in &quot;Edit eLVL attributes&quot;.</p>
+
+</body>
+</html>
