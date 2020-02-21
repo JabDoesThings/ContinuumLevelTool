@@ -6,10 +6,7 @@ import javax.imageio.ImageIO;
 import javax.media.jai.JAI;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.RenderedImage;
-import java.awt.image.WritableRaster;
+import java.awt.image.*;
 import java.io.File;
 
 /**
@@ -19,14 +16,13 @@ import java.io.File;
  * @author Stan
  */
 public class FileImage {
-  public Image i = null;
 
+  public Image image = null;
+  private String originalFilename = null;
   private boolean isJPEG = false;
 
-  private String originalFilename = null;
-
-  FileImage(Image i) {
-    this.i = i;
+  FileImage(Image image) {
+    this.image = image;
   }
 
   /**
@@ -49,23 +45,23 @@ public class FileImage {
     }
 
     try {
+
       RenderedImage r_image = JAI.create("fileload", filename);
 
-      BufferedImage testimage =
-          new BufferedImage(
-              r_image.getColorModel(), (WritableRaster) (r_image.getData()), false, null);
+      ColorModel colorModel = r_image.getColorModel();
+      WritableRaster raster = (WritableRaster) r_image.getData();
+      image = new BufferedImage(colorModel, raster, false, null);
 
-      i = (Image) testimage;
     } catch (Exception e) {
+
       JOptionPane.showMessageDialog(null, "Warning, JAI Error: " + filename);
 
-      i =
-          new ImageIcon(
-                  Main.rootDirectory + File.separator + "include" + File.separator + "noimage.png")
-              .getImage();
+      String path =
+          Main.rootDirectory + File.separator + "include" + File.separator + "noimage.png";
+      image = new ImageIcon(path).getImage();
     }
 
-    i = ImageLoader.makeBlackTransparent(i);
+    image = ImageLoader.makeBlackTransparent(image);
 
     if (filename.toLowerCase().endsWith("jpg")) {
       isJPEG = true;
@@ -76,36 +72,36 @@ public class FileImage {
   /**
    * Save this image to the filesystem
    *
-   * @param saveTo the filepath to save to
+   * @param path the filepath to save to
    * @param creator an internal frame we can use to create images in memory
    */
-  public void saveImage(String saveTo, JInternalFrame creator) {
+  void saveImage(String path, JInternalFrame creator) {
     boolean saveRegular = false;
     if (isJPEG) {
       File f = new File(originalFilename);
 
       if (!f.exists()) saveRegular = true;
       else {
-        if (!LvzFiling.copyFile(originalFilename, saveTo)) saveRegular = true;
+        if (!LvzFiling.copyFile(originalFilename, path)) saveRegular = true;
       }
     } else {
       saveRegular = true;
     }
 
     if (saveRegular) {
-      int width = i.getWidth(null);
-      int height = i.getHeight(null);
+      int width = image.getWidth(null);
+      int height = image.getHeight(null);
 
       BufferedImage bi = (BufferedImage) creator.createImage(width, height);
 
       Graphics g = bi.getGraphics();
       g.setColor(Color.black);
       g.fillRect(0, 0, bi.getWidth(null), bi.getHeight(null));
-      g.drawImage(i, 0, 0, null);
+      g.drawImage(image, 0, 0, null);
 
       try {
-        if (isJPEG) ImageIO.write(bi, "JPG", new File(saveTo));
-        else ImageIO.write(bi, "PNG", new File(saveTo));
+        String format = isJPEG ? "JPG" : "PNG";
+        ImageIO.write(bi, format, new File(path));
       } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Image Save Failed: " + e.toString());
       }
@@ -117,12 +113,8 @@ public class FileImage {
    *
    * @return ".jpg" or ".png", depending on the type of image we loaded
    */
-  public String getExtention() {
-    String rv = ".png";
-
-    if (isJPEG) rv = ".jpg";
-
-    return rv;
+  String getExtention() {
+    return isJPEG ? ".jpg" : ".png";
   }
 
   /**
@@ -132,7 +124,7 @@ public class FileImage {
    * @return the width of the image
    */
   public int getWidth(ImageObserver o) {
-    return i.getWidth(o);
+    return image.getWidth(o);
   }
 
   /**
@@ -142,6 +134,6 @@ public class FileImage {
    * @return the height of the image
    */
   public int getHeight(ImageObserver o) {
-    return i.getHeight(o);
+    return image.getHeight(o);
   }
 }

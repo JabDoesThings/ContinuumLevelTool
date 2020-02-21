@@ -411,16 +411,16 @@ public class LvzImageWindow extends JInternalFrame
 
     LvzImage sIm = ((LvzImage) curImages.get(imagePanel.selectedImage));
 
-    if (sIm.xFrames == 1 && sIm.yFrames == 1) return sIm.image.i;
+    if (sIm.xFrames == 1 && sIm.yFrames == 1) return sIm.image.image;
     else {
-      int w = sIm.image.i.getWidth(null) / sIm.xFrames;
-      int h = sIm.image.i.getHeight(null) / sIm.yFrames;
+      int w = sIm.image.image.getWidth(null) / sIm.xFrames;
+      int h = sIm.image.image.getHeight(null) / sIm.yFrames;
 
       Image i = parent.createImage(w, h);
       Graphics g = i.getGraphics();
       g.setColor(Color.black);
       g.fillRect(0, 0, w, h);
-      g.drawImage(sIm.image.i, 0, 0, w, h, 0, 0, w, h, null);
+      g.drawImage(sIm.image.image, 0, 0, w, h, 0, 0, w, h, null);
       g.setColor(Color.RED);
       g.drawString("Animation", 2, h - 2);
 
@@ -494,8 +494,8 @@ public class LvzImageWindow extends JInternalFrame
 
           LvzImage sIm = ((LvzImage) lvzImages.get(mo.imageIndex));
 
-          int w = sIm.image.i.getWidth(null) / sIm.xFrames;
-          int h = sIm.image.i.getHeight(null) / sIm.yFrames;
+          int w = sIm.image.image.getWidth(null) / sIm.xFrames;
+          int h = sIm.image.image.getHeight(null) / sIm.yFrames;
 
           double x = mo.x;
           double y = mo.y;
@@ -811,7 +811,7 @@ public class LvzImageWindow extends JInternalFrame
       if (e.getSource() == s_mo_x) {
         Vector im = (Vector) imagePanel.imageFiles.get(c_mo_lvz.getSelectedIndex());
         LvzImage l = (LvzImage) im.get(m.imageIndex);
-        Rectangle r = new Rectangle(m.x, m.y, l.image.i.getWidth(null), l.image.i.getHeight(null));
+        Rectangle r = new Rectangle(m.x, m.y, l.image.image.getWidth(null), l.image.image.getHeight(null));
 
         if (((Number) s_mo_x.getValue()).intValue() != m.x) parent.modified = true;
 
@@ -979,13 +979,13 @@ public class LvzImageWindow extends JInternalFrame
               Image image = null;
 
               if (sIm.xFrames == 1 && sIm.yFrames == 1) {
-                image = sIm.image.i;
+                image = sIm.image.image;
               } else {
                 Image i = parent.createImage(w, h);
                 Graphics gr = i.getGraphics();
                 gr.setColor(Color.black);
                 gr.fillRect(0, 0, w, h);
-                gr.drawImage(sIm.image.i, 0, 0, w, h, 0, 0, w, h, null);
+                gr.drawImage(sIm.image.image, 0, 0, w, h, 0, 0, w, h, null);
                 gr.setColor(Color.RED);
                 gr.drawString("Animation", 2, h - 2);
 
@@ -1043,13 +1043,13 @@ public class LvzImageWindow extends JInternalFrame
               Image image = null;
 
               if (sIm.xFrames == 1 && sIm.yFrames == 1) {
-                image = sIm.image.i;
+                image = sIm.image.image;
               } else {
                 Image i = parent.createImage(w, h);
                 Graphics gr = i.getGraphics();
                 gr.setColor(Color.black);
                 gr.fillRect(0, 0, w, h);
-                gr.drawImage(sIm.image.i, 0, 0, w, h, 0, 0, w, h, null);
+                gr.drawImage(sIm.image.image, 0, 0, w, h, 0, 0, w, h, null);
                 gr.setColor(Color.RED);
                 gr.drawString("Animation", 2, h - 2);
 
@@ -1686,7 +1686,7 @@ class ImagePanel extends JPanel implements MouseListener {
           if (numFrames == 1) {
             g.drawString("Image", xCoord, imageSize + 27);
             g.drawImage(
-                l.image.i,
+                l.image.image,
                 xCoord,
                 yCoord,
                 xCoord + imageSize,
@@ -1715,7 +1715,7 @@ class ImagePanel extends JPanel implements MouseListener {
             int yLocation = (int) (frame / l.xFrames) * height;
 
             g.drawImage(
-                l.image.i,
+                l.image.image,
                 xCoord,
                 yCoord,
                 xCoord + imageSize,
@@ -1805,7 +1805,7 @@ class ImagePanel extends JPanel implements MouseListener {
   public Image getSelectedImage() {
     Vector selectedImages = ((Vector) imageFiles.get(parent.lvzSelector.getSelectedIndex()));
 
-    return ((LvzImage) selectedImages.get(selectedImage)).image.i;
+    return ((LvzImage) selectedImages.get(selectedImage)).image.image;
   }
 
   public void changeSelectedImage(Image newImage) {
