@@ -5,17 +5,15 @@
 
 package editor.lvz;
 
+public class LvzImage {
+  public int index;
 
-public class LvzImage
-{
-	public int index;
+  // public String filename;
+  public FileImage image;
 
-	// public String filename;
-	public FileImage image;
+  public int xFrames;
 
-	public int xFrames;
+  public int yFrames;
 
-	public int yFrames;
-
-	public int animationTime; // centiseconds for the total animation
+  public int animationTime; // centiseconds for the total animation
 };

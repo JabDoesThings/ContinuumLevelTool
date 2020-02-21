@@ -1,30 +1,23 @@
 package editor.lvz;
 
-/**
- * 
- * @author baks
- */
-public class XImageObject
-{
-	int num;
+/** @author baks */
+public class XImageObject {
+  int num;
 
-	int x;
+  int x;
 
-	int y;
+  int y;
 
-	int time;
+  int time;
 
-	String name;
+  String name;
 
-	public XImageObject()
-	{
-	}
+  public XImageObject() {}
 
-	public String toString()
-	{
-		// IMAGE<number>=<filename>,<x tiles>,<y tiles>,<anim period>
-		String s = "IMAGE" + num + "=" + name + "," + x + "," + y + "," + time;
+  public String toString() {
+    // IMAGE<number>=<filename>,<x tiles>,<y tiles>,<anim period>
+    String s = "IMAGE" + num + "=" + name + "," + x + "," + y + "," + time;
 
-		return s;
-	}
+    return s;
+  }
 }

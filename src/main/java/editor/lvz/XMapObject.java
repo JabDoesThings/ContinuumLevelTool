@@ -1,43 +1,43 @@
 package editor.lvz;
 
-/**
- * 
- * @author baks
- */
-public class XMapObject
-{
-	int id;
+/** @author baks */
+public class XMapObject {
+  int id;
 
-	int x;
+  int x;
 
-	int y;
+  int y;
 
-	int imageNum;
+  int imageNum;
 
-	int layer;
+  int layer;
 
-	int time;
+  int time;
 
-	int mode;
+  int mode;
 
-	public XMapObject()
-	{
-	}
+  public XMapObject() {}
 
-	public String toString()
-	{
-		// <x coord>,<y coord>,<image>,<layer>,<mode>,<display time>,<object id>
+  public String toString() {
+    // <x coord>,<y coord>,<image>,<layer>,<mode>,<display time>,<object id>
 
-		String imageString;
-		if (imageNum < 10)
-			imageString = "IMAGE" + imageNum + "  ";
-		else if (imageNum < 100)
-			imageString = "IMAGE" + imageNum + " ";
-		else
-			imageString = "IMAGE" + imageNum;
+    String imageString;
+    if (imageNum < 10) imageString = "IMAGE" + imageNum + "  ";
+    else if (imageNum < 100) imageString = "IMAGE" + imageNum + " ";
+    else imageString = "IMAGE" + imageNum;
 
-		return x + ",\t" + y + ",\t" + imageString + ",\t"
-				+ ExtractLvz.layers[layer] + ",\t" + ExtractLvz.modes[mode]
-				+ ",\t" + time + ",\t" + id;
-	}
+    return x
+        + ",\t"
+        + y
+        + ",\t"
+        + imageString
+        + ",\t"
+        + ExtractLvz.layers[layer]
+        + ",\t"
+        + ExtractLvz.modes[mode]
+        + ",\t"
+        + time
+        + ",\t"
+        + id;
+  }
 }
